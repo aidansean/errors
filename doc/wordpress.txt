@@ -1,0 +1,20 @@
+As part of my webspace I wanted to add some humourous error pages to soften the blow when there's a problem.
+
+<h3>Links</h3>
+
+<a href="http://www.aidansean.com/errors">Live page</a>
+<a href="https://github.com/aidansean/errors">GitHub repository</a>
+
+<h3>Overview</h3>
+
+This project works in two distinct phases: first the <code>.htaccess</code> file catches HTTP responses and redirects them before the client's browser can display an error page, and second the PHP script interprets the redirected URI and displays the relevant message.  For whimsy, a random comic from Lore Brand Comics is shown.  I've loosely followed Lore Sjoeberg's work since the Brunching Shuttlecocks started in the mid '90s.
+
+<h3>Challenges</h3>
+<dl>
+<dt><em>Challenge</em>: <code>.htaccess</code> must catch a relative path from anywhere in the domain.</dt>
+
+<dd><em>Solution</em>: For some reason this eluded me for years.  On receiving an HTTP request error, the <code>.htaccess</code> used to redirect to an absolute path, including the full domain name, which meant that the PHP script didn't know the original URI.  Once I fixed this issue I could provide more useful information for the client. (Resolved)</dd>
+<dt><em>Challenge</em>: The data for each constituency varies in its content and structure.</dt>
+
+<dd><em>Solution</em>: The data contains various parties and candidates which vary from constituency to constituency.  As a result the data processing must be able to add an arbitrary list of candidates and parties per constituency.  This turned out to be trivial, using the database schema, but did add another layer of complexity to the project. (Resolved)</dd>
+</dl>
